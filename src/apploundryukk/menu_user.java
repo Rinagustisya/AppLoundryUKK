@@ -11,6 +11,8 @@ public class menu_user extends javax.swing.JFrame {
     private PreparedStatement stat;
     private ResultSet rs;
     koneksi k = new koneksi();
+    private int id_user, id_outlet;
+    private String role="";
     
     public menu_user() {
         initComponents();
@@ -18,6 +20,17 @@ public class menu_user extends javax.swing.JFrame {
         refreshTable();
     }
     
+    public void setId_User(int id_user) {
+        this.id_user = id_user;
+    }
+     
+     public void setId_Outlet(int id_outlet) {
+        this.id_outlet = id_outlet;
+    }
+     
+    public void setRole(String role) {
+        this.role = role;
+    }
     public void refreshTable() {
         model =new DefaultTableModel();
         model.addColumn("Id User");

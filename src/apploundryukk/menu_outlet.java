@@ -10,11 +10,25 @@ public class menu_outlet extends javax.swing.JFrame {
     private PreparedStatement stat;
     private ResultSet rs;
     koneksi k = new koneksi();
+    private int id_user, id_outlet;
+    private String role="";
     
     public menu_outlet() {
         initComponents();
         k.connect();
         refreshTable();
+    }
+    
+     public void setId_User(int id_user) {
+        this.id_user = id_user;
+    }
+     
+     public void setId_Outlet(int id_outlet) {
+        this.id_outlet = id_outlet;
+    }
+     
+    public void setRole(String role) {
+        this.role = role;
     }
     
     public void refreshTable() {
