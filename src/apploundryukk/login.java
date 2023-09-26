@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package apploundryukk;
 
-/**
- *
- * @author PC-26
- */
-public class login extends javax.swing.JFrame {
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
-    /**
-     * Creates new form login
-     */
+public class login extends javax.swing.JFrame {
+    
+    private PreparedStatement stat;
+    private ResultSet rs;
+    koneksi k = new koneksi();
+    
     public login() {
         initComponents();
+        k.connect();
     }
 
     /**
@@ -52,6 +49,11 @@ public class login extends javax.swing.JFrame {
         btn_login.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btn_login.setText("MASUK");
         btn_login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_loginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,6 +98,38 @@ public class login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        // TODO add your handling code here:
+        int id_user = 0, id_outlet = 0;
+        String role = "";
+        
+        try {
+            this.stat = k.getCon().prepareStatement("SELECT * FROM user "
+            + "WHERE username=? and password=?");
+            stat.setString(1, username.getText());
+            stat.setString(1, password.getText());
+            this.rs = this.stat.executeQuery();
+            
+            while (rs.next()) {
+                id_user = rs.getInt("id_user");
+                role = rs.getString("role");
+                id_outlet = rs.getInt("id_outlet");
+            }
+            if (role.equals("")) {
+                JOptionPane.showMessageDialog(null, "Akun Tidak Ditemukan!!");
+            } else {
+                menu_utama m = new menu_utama();
+                m.setId_User(id_user);
+                m.setId_Outlet(id_outlet);
+                m.setRole(role);
+                m.setVisible(true);
+                this.setVisible(false);
+            }
+        } catch (Exception e) {
+         JOptionPane.showMessageDialog(null, e.getMessage()); 
+        }
+    }//GEN-LAST:event_btn_loginActionPerformed
 
     /**
      * @param args the command line arguments
