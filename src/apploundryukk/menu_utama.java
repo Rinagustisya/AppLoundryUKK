@@ -1,23 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package apploundryukk;
 
-/**
- *
- * @author PC-26
- */
 public class menu_utama extends javax.swing.JFrame {
-
-    /**
-     * Creates new form menu_utama
-     */
+    
+    private int id_user, id_outlet;
+    private String role="";
+    koneksi k = new koneksi();
+    
     public menu_utama() {
         initComponents();
+        k.connect();
     }
 
+    public void setId_User(int id_user) {
+        this.id_user = id_user;
+        txtIdUser.setText(""+id_user);
+    }
+    
+     public void setId_Outlet(int id_outlet) {
+        this.id_outlet = id_outlet;
+        txtIdOutlet.setText(""+id_outlet);
+    }
+     
+     public void setRole(String role) {
+        this.role = role;
+        if (role.equals("admin")) {
+            btn_transaksi.setEnabled(true);
+            btn_member.setEnabled(true);
+            btn_paket.setEnabled(true);
+            btn_outlet.setEnabled(true);
+            btn_user.setEnabled(true);
+        } else if (role.equals("kasir")) {
+            btn_transaksi.setEnabled(true);
+            btn_member.setEnabled(true);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,9 +44,9 @@ public class menu_utama extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        Id_user = new javax.swing.JTextField();
+        txtIdUser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        Id_outlet = new javax.swing.JTextField();
+        txtIdOutlet = new javax.swing.JTextField();
         btn_logout = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btn_transaksi = new javax.swing.JButton();
@@ -117,11 +133,11 @@ public class menu_utama extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Id_user, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Id_outlet, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIdOutlet, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -145,9 +161,9 @@ public class menu_utama extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Id_outlet, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIdOutlet, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Id_user, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(txtIdUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                     .addComponent(btn_logout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,8 +234,6 @@ public class menu_utama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Id_outlet;
-    private javax.swing.JTextField Id_user;
     private javax.swing.JButton btn_cetak;
     private javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_member;
@@ -230,5 +244,7 @@ public class menu_utama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField txtIdOutlet;
+    private javax.swing.JTextField txtIdUser;
     // End of variables declaration//GEN-END:variables
 }
