@@ -45,6 +45,7 @@ public class menu_paket extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
             txtId.setText("");
+            txtOutlet.setText("");
             txtNama.setText("");
             txtHarga.setText("");
             
@@ -85,6 +86,8 @@ public class menu_paket extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("ID PAKET :");
+
+        txtId.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("JENIS");
@@ -276,7 +279,7 @@ public class menu_paket extends javax.swing.JFrame {
             stat.setString(2, cbJenis.getSelectedItem().toString());
             stat.setString(3, txtNama.getText());
             stat.setString(4, txtHarga.getText());
-            stat.setString(5, txtId.getText());
+            stat.setString(5, txtOutlet.getText());
           
             stat.executeUpdate();
             refreshTable();
