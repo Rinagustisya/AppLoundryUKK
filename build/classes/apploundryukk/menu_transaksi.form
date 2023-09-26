@@ -152,7 +152,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="txtBiaya" min="-2" pref="223" max="-2" attributes="0"/>
-                                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jLabel11" min="-2" pref="106" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -161,11 +161,11 @@
                                       <Component id="jLabel10" min="-2" pref="106" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jDateChooser1" max="32767" attributes="0"/>
-                                          <Component id="cbMember" pref="223" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jDateChooser4" max="32767" attributes="0"/>
+                                          <Component id="cbMember" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="36" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel9" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
                                           <Component id="jLabel8" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
@@ -173,17 +173,19 @@
                                   </Group>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cbDiskon" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="cbDiskon" min="-2" pref="41" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="cbPaket" alignment="0" pref="172" max="32767" attributes="0"/>
+                                      <Component id="txtQuantity" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jDateChooser2" pref="172" max="32767" attributes="0"/>
-                                  <Component id="cbPaket" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtQuantity" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jDateChooser5" min="-2" pref="216" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="39" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -197,8 +199,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel4" max="32767" attributes="0"/>
                           <Component id="jLabel8" pref="33" max="32767" attributes="0"/>
-                          <Component id="jDateChooser1" max="32767" attributes="0"/>
-                          <Component id="jDateChooser2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jDateChooser4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jDateChooser5" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -362,9 +364,9 @@
                 <Property name="text" type="java.lang.String" value="%"/>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser4">
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser5">
             </Component>
           </SubComponents>
         </Container>
@@ -400,7 +402,6 @@
                                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                       <Component id="cbPembayaran" min="-2" pref="163" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jDateChooser3" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -417,10 +418,7 @@
                           <Component id="jLabel13" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel14" pref="36" max="32767" attributes="0"/>
-                          <Component id="jDateChooser3" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel14" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel15" max="32767" attributes="0"/>
@@ -512,8 +510,6 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
-            </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser3">
             </Component>
           </SubComponents>
         </Container>

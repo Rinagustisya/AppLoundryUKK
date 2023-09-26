@@ -246,12 +246,11 @@ public class menu_paket extends javax.swing.JFrame {
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // TODO add your handling code here:
          try {
-            stat = k.getCon().prepareStatement("UPDATE paket " + "set jenis=?, nama_paket=?, harga=?, outlet_id=? WHERE id_paket=?");
-            stat.setString(1, txtOutlet.getText());
-            stat.setString(4, cbJenis.getSelectedItem().toString());
+            this.stat = k.getCon().prepareStatement("UPDATE paket " + "set jenis=?, nama_paket=?, harga=?, outlet_id=? WHERE id_paket=?");
+            stat.setString(1, cbJenis.getSelectedItem().toString());
             stat.setString(2, txtNama.getText());
             stat.setString(3, txtHarga.getText());
-            stat.setString(5, txtId.getText());
+            stat.setString(4, txtId.getText());
             stat.executeUpdate();
             refreshTable();
         } catch (Exception e) {
