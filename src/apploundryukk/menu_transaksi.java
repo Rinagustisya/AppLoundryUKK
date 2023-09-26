@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package apploundryukk;
 
-/**
- *
- * @author PC-26
- */
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class menu_transaksi extends javax.swing.JFrame {
 
     /**
@@ -51,8 +47,8 @@ public class menu_transaksi extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         cbDiskon = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        jDateChooser4 = new com.toedter.calendar.JDateChooser();
-        jDateChooser5 = new com.toedter.calendar.JDateChooser();
+        Tanggal = new com.toedter.calendar.JDateChooser();
+        tanggal1 = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -70,6 +66,10 @@ public class menu_transaksi extends javax.swing.JFrame {
         jLabel1.setText("ID USER :");
 
         jLabel2.setText("ID OUTLET :");
+
+        idUser.setEnabled(false);
+
+        idOutlet.setEnabled(false);
 
         btn_menu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_menu.setText("MENU");
@@ -143,7 +143,7 @@ public class menu_transaksi extends javax.swing.JFrame {
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateChooser4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbMember, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +158,7 @@ public class menu_transaksi extends javax.swing.JFrame {
                                     .addComponent(jLabel12))
                                 .addComponent(cbPaket, 0, 172, Short.MAX_VALUE)
                                 .addComponent(txtQuantity))
-                            .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tanggal1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 27, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -169,8 +169,8 @@ public class menu_transaksi extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(jDateChooser4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tanggal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -363,6 +363,7 @@ public class menu_transaksi extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser Tanggal;
     private javax.swing.JButton btnTambah;
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_menu;
@@ -373,8 +374,6 @@ public class menu_transaksi extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JTextField idOutlet;
     private javax.swing.JTextField idUser;
-    private com.toedter.calendar.JDateChooser jDateChooser4;
-    private com.toedter.calendar.JDateChooser jDateChooser5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -396,6 +395,7 @@ public class menu_transaksi extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField kode;
+    private com.toedter.calendar.JDateChooser tanggal1;
     private javax.swing.JTable tb_transaksi;
     private javax.swing.JTextField txtBiaya;
     private javax.swing.JTextField txtKet;
