@@ -7,13 +7,80 @@ import javax.swing.table.DefaultTableModel;
 
 public class menu_transaksi extends javax.swing.JFrame {
 
-    /**
-     * Creates new form menu_transaksi
-     */
+    private DefaultTableModel model = null;
+    private PreparedStatement stat;
+    private ResultSet rs;
+    koneksi k = new koneksi();
+    private int id_user, id_outlet;
+    private String role="";
+    
     public menu_transaksi() {
         initComponents();
+        k.connect();
+        refreshTable();
     }
 
+    
+    public void setId_User(int id_user) {
+        this.id_user = id_user;
+        idUser.setText(""+id_user);
+    }
+     
+     public void setId_Outlet(int id_outlet) {
+        this.id_outlet = id_outlet;
+        idOutlet.setText(""+id_outlet);
+    }
+     
+    public void setRole(String role) {
+        this.role = role;
+    }
+    
+    public void refreshTable() {
+        model =new DefaultTableModel();
+        model.addColumn("Id Transaksi");
+        model.addColumn("Kode Invoice");
+        model.addColumn("Id Member");
+        model.addColumn("Tanggal Transaksi");
+        model.addColumn("Batas Waktu");
+        model.addColumn("Tanggal Bayar");
+        model.addColumn("Biaya Tambahan");
+        model.addColumn("Diskon");
+        model.addColumn("Status");
+        model.addColumn("Dibayar");
+        model.addColumn("ID Paket");
+        model.addColumn("QTY");
+
+        tb_transaksi.setModel(model);
+        
+        try{
+            this.stat = k.getCon().prepareStatement("SELECT * FROM transaksi");
+            this.rs = stat.executeQuery();
+            while (rs.next()) {
+                Object[] data = {
+                    rs.getString("id_transaksi"),
+                    rs.getString("kode_invoice"),
+                    rs.getString("member_id"),
+                    rs.getString("tgl"),
+                    rs.getString("batas_waktu"),
+                    rs.getString("tgl_bayar"),
+                    rs.getString("biaya_tambahan"),
+                    rs.getString("diskon"),
+                    rs.getString("status"),
+                    rs.getString("dibayar"),
+                    rs.getString("id_paket"),
+                    rs.getString("qty")
+                };
+                model.addRow(data);
+                }
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+            txtId.setText("");
+            txtOutlet.setText("");
+            txtNama.setText("");
+            txtHarga.setText("");
+            
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -334,7 +401,12 @@ public class menu_transaksi extends javax.swing.JFrame {
 
     private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
         // TODO add your handling code here:
-        
+        menu_utama m = new menu_utama();
+        m.setId_User(id_user);
+        m.setId_Outlet(id_outlet);
+        m.setRole(role);
+        m.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_menuActionPerformed
 
     /**
