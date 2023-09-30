@@ -95,6 +95,8 @@ public class menu_outlet extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("ID");
 
+        txtId.setEnabled(false);
+
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("NAMA");
 
@@ -161,6 +163,11 @@ public class menu_outlet extends javax.swing.JFrame {
         btn_home.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btn_home.setText("HOME");
         btn_home.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_homeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -289,6 +296,16 @@ public class menu_outlet extends javax.swing.JFrame {
         txtAlamat.setText(model.getValueAt(tb_outlet.getSelectedRow(),2).toString());
         txtTelp.setText(model.getValueAt(tb_outlet.getSelectedRow(),3).toString());
     }//GEN-LAST:event_tb_outletMouseClicked
+
+    private void btn_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
+        // TODO add your handling code here:
+        menu_utama m = new menu_utama();
+        m.setId_User(id_user);
+        m.setId_Outlet(id_outlet);
+        m.setRole(role);
+        m.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_homeActionPerformed
 
     /**
      * @param args the command line arguments

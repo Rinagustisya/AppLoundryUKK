@@ -26,6 +26,7 @@ public class menu_user extends javax.swing.JFrame {
      
      public void setId_Outlet(int id_outlet) {
         this.id_outlet = id_outlet;
+        txtIdUser.setText(""+id_outlet);
     }
      
     public void setRole(String role) {
@@ -59,7 +60,7 @@ public class menu_user extends javax.swing.JFrame {
             }catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
-            txtId.setText("");
+            txtIdUser.setText("");
             txtNama.setText("");
             username.setText("");
             password.setText("");
@@ -91,7 +92,7 @@ public class menu_user extends javax.swing.JFrame {
         cbRole = new javax.swing.JComboBox<>();
         btnHome = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
+        txtIdUser = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,9 +168,16 @@ public class menu_user extends javax.swing.JFrame {
         btnHome.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnHome.setText("HOME");
         btnHome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel7.setText("ID OUTLET :");
+
+        txtIdUser.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,7 +190,7 @@ public class menu_user extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtId)
+                        .addComponent(txtIdUser)
                         .addGap(18, 18, 18)
                         .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -226,7 +234,7 @@ public class menu_user extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtIdUser, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -274,7 +282,7 @@ public class menu_user extends javax.swing.JFrame {
             stat.setString(2, username.getText());
             stat.setString(3, password.getText());
             stat.setString(4, cbRole.getSelectedItem().toString());
-            stat.setString(5, txtId.getText());
+            stat.setString(5, txtIdUser.getText());
             
             stat.executeUpdate();
             refreshTable();
@@ -287,7 +295,7 @@ public class menu_user extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             stat = k.getCon().prepareStatement("DELETE FROM user " + " WHERE id_user=?");
-            stat.setString(1, txtId.getText());
+            stat.setString(1, txtIdUser.getText());
             stat.executeUpdate();
             refreshTable();
         } catch (Exception e) {
@@ -303,7 +311,7 @@ public class menu_user extends javax.swing.JFrame {
             stat.setString(2, txtNama.getText());
             stat.setString(3, username.getText());
             stat.setString(4, password.getText());
-            stat.setString(5, txtId.getText());
+            stat.setString(5, txtIdUser.getText());
             stat.setString(6, cbRole.getSelectedItem().toString());
             stat.executeUpdate();
             refreshTable();
@@ -314,11 +322,21 @@ public class menu_user extends javax.swing.JFrame {
 
     private void tb_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_userMouseClicked
         // TODO add your handling code here:
-        txtId.setText(model.getValueAt(tb_user.getSelectedRow(),0).toString());
+        txtIdUser.setText(model.getValueAt(tb_user.getSelectedRow(),0).toString());
         txtNama.setText(model.getValueAt(tb_user.getSelectedRow(),1).toString());
         username.setText(model.getValueAt(tb_user.getSelectedRow(),2).toString());
         password.setText(model.getValueAt(tb_user.getSelectedRow(),3).toString());
     }//GEN-LAST:event_tb_userMouseClicked
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+        menu_utama m = new menu_utama();
+        m.setId_User(id_user);
+        m.setId_Outlet(id_outlet);
+        m.setRole(role);
+        m.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,7 +391,7 @@ public class menu_user extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPasswordField password;
     private javax.swing.JTable tb_user;
-    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtIdUser;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables

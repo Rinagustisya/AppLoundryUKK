@@ -26,6 +26,7 @@ public class menu_paket extends javax.swing.JFrame {
      
      public void setId_Outlet(int id_outlet) {
         this.id_outlet = id_outlet;
+        txtOutlet.setText(""+id_outlet);
     }
      
     public void setRole(String role) {
@@ -161,9 +162,16 @@ public class menu_paket extends javax.swing.JFrame {
         btn_home.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btn_home.setText("HOME");
         btn_home.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_homeActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel7.setText("ID OUTLET :");
+
+        txtOutlet.setEnabled(false);
 
         cbJenis.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         cbJenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kiloan", "Selimut", "Bedcover", "lainnya" }));
@@ -184,8 +192,8 @@ public class menu_paket extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtOutlet)
-                        .addGap(18, 18, 18)
+                        .addComponent(txtOutlet, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_home, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -312,6 +320,16 @@ public class menu_paket extends javax.swing.JFrame {
         txtNama.setText(model.getValueAt(tb_paket.getSelectedRow(),2).toString());
         txtHarga.setText(model.getValueAt(tb_paket.getSelectedRow(),3).toString());
     }//GEN-LAST:event_tb_paketMouseClicked
+
+    private void btn_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
+        // TODO add your handling code here:
+        menu_utama m = new menu_utama();
+        m.setId_User(id_user);
+        m.setId_Outlet(id_outlet);
+        m.setRole(role);
+        m.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_homeActionPerformed
 
     /**
      * @param args the command line arguments

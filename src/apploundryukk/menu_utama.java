@@ -23,13 +23,13 @@ public class menu_utama extends javax.swing.JFrame {
      
      public void setRole(String role) {
         this.role = role;
-        if (role.equals("admin")) {
+        if (this.role.equals("admin")) {
             btn_transaksi.setEnabled(true);
             btn_member.setEnabled(true);
             btn_paket.setEnabled(true);
             btn_outlet.setEnabled(true);
             btn_user.setEnabled(true);
-        } else if (role.equals("kasir")) {
+        } else if (this.role.equals("kasir")) {
             btn_transaksi.setEnabled(true);
             btn_member.setEnabled(true);
         }
@@ -61,8 +61,12 @@ public class menu_utama extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("ID USER :");
 
+        txtIdUser.setEnabled(false);
+
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("ID OUTLET :");
+
+        txtIdOutlet.setEnabled(false);
 
         btn_logout.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btn_logout.setText("LOGOUT");
@@ -82,11 +86,21 @@ public class menu_utama extends javax.swing.JFrame {
         btn_transaksi.setText("TRANSAKSI");
         btn_transaksi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_transaksi.setEnabled(false);
+        btn_transaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_transaksiActionPerformed(evt);
+            }
+        });
 
         btn_member.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btn_member.setText("MEMBER");
         btn_member.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_member.setEnabled(false);
+        btn_member.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_memberActionPerformed(evt);
+            }
+        });
 
         btn_paket.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btn_paket.setText("PAKET");
@@ -121,6 +135,11 @@ public class menu_utama extends javax.swing.JFrame {
         btn_cetak.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btn_cetak.setText("CETAK \nLAPORAN");
         btn_cetak.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_cetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cetakActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,19 +203,59 @@ public class menu_utama extends javax.swing.JFrame {
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
         // TODO add your handling code here:
+        login l = new login();
+        l.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_userActionPerformed
         // TODO add your handling code here:
+        menu_user m = new menu_user();
+        m.setId_User(id_user);
+        m.setId_Outlet(id_outlet);
+        m.setRole(role);
+        m.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_userActionPerformed
 
     private void btn_paketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_paketActionPerformed
         // TODO add your handling code here:
+        menu_paket m = new menu_paket();
+        m.setId_User(id_user);
+        m.setId_Outlet(id_outlet);
+        m.setRole(role);
+        m.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_paketActionPerformed
 
     private void btn_outletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_outletActionPerformed
         // TODO add your handling code here:
+        menu_outlet m = new menu_outlet();
+        m.setId_User(id_user);
+        m.setId_Outlet(id_outlet);
+        m.setRole(role);
+        m.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_outletActionPerformed
+
+    private void btn_transaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transaksiActionPerformed
+        // TODO add your handling code here:
+        menu_transaksi m = new menu_transaksi();
+    }//GEN-LAST:event_btn_transaksiActionPerformed
+
+    private void btn_memberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_memberActionPerformed
+        // TODO add your handling code here:
+        menu_member m = new menu_member();
+        m.setId_User(id_user);
+        m.setId_Outlet(id_outlet);
+        m.setRole(role);
+        m.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_memberActionPerformed
+
+    private void btn_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cetakActionPerformed
 
     /**
      * @param args the command line arguments
