@@ -2,6 +2,9 @@ package apploundryukk;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -108,6 +111,12 @@ public class menu_transaksi extends javax.swing.JFrame {
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+    }
+    
+    public int hitungPajak(int harga) {
+        int pajak = 0;
+        pajak = (int) (harga*0.1);
+        return pajak;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -455,6 +464,26 @@ public class menu_transaksi extends javax.swing.JFrame {
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
+        String inv = "";
+        Date d = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY-HH-mm-ss");
+        DateFormat dateFormat2 = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        inv = dateFormat.format(d);
+        double diskon = Double.parseDouble(cbDiskon.getSelectedItem().toString()) /100;
+        String[] split = cbPaket.getSelectedItem().toString().split(":");
+        int total = Integer.parseInt(txtQty.getText()) * Integer.parseInt(split[2]);
+        int pajak = hitungPajak(total);
+        
+        try {
+            this.stat = k.getCon().prepareStatement("INSERT INTO transaksi "
+            + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            stat.setInt(1, 0);
+            stat.setString(2, idOutlet.getText());
+            stat.setString(3, inv);
+            stat.setString(4, cbMember.getSelectedItem().toString());
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_btnTambahActionPerformed
 
     /**
