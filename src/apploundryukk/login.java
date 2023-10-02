@@ -108,7 +108,7 @@ public class login extends javax.swing.JFrame {
             this.stat = k.getCon().prepareStatement("SELECT * FROM user "
             + "WHERE username=? and password=?");
             stat.setString(1, username.getText());
-            stat.setString(1, password.getText());
+            stat.setString(2, password.getText());
             this.rs = this.stat.executeQuery();
             
             while (rs.next()) {

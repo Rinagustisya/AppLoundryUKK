@@ -241,6 +241,11 @@ public class menu_utama extends javax.swing.JFrame {
     private void btn_transaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transaksiActionPerformed
         // TODO add your handling code here:
         menu_transaksi m = new menu_transaksi();
+        m.setId_User(id_user);
+        m.setId_Outlet(id_outlet);
+        m.setRole(role);
+        m.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_transaksiActionPerformed
 
     private void btn_memberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_memberActionPerformed

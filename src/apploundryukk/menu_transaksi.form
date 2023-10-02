@@ -31,8 +31,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="idUser" min="-2" pref="98" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="62" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="idOutlet" min="-2" pref="98" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btn_menu" min="-2" pref="86" max="-2" attributes="0"/>
@@ -190,7 +190,7 @@
                                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="cbPaket" alignment="0" pref="172" max="32767" attributes="0"/>
-                                      <Component id="txtQuantity" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtQty" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="tanggal1" min="-2" pref="216" max="-2" attributes="0"/>
                               </Group>
@@ -223,7 +223,7 @@
                           <Component id="jLabel6" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="txtKet" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jLabel10" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="txtQuantity" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="txtQty" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -287,6 +287,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTambahActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
@@ -307,9 +310,7 @@
             <Component class="javax.swing.JComboBox" name="cbPaket">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="4 Selimut"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -338,7 +339,7 @@
                 <Property name="text" type="java.lang.String" value="QUANTITY"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtQuantity">
+            <Component class="javax.swing.JTextField" name="txtQty">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
@@ -403,7 +404,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="kode" max="32767" attributes="0"/>
+                                  <Component id="txtInvoice" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="cbStatus" min="-2" pref="116" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
@@ -411,6 +412,7 @@
                                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                       <Component id="cbPembayaran" min="-2" pref="163" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="tgl_bayar" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -423,11 +425,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="kode" pref="36" max="32767" attributes="0"/>
+                          <Component id="txtInvoice" pref="36" max="32767" attributes="0"/>
                           <Component id="jLabel13" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jLabel14" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel14" pref="36" max="32767" attributes="0"/>
+                          <Component id="tgl_bayar" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel15" max="32767" attributes="0"/>
@@ -481,8 +486,11 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_editActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="kode">
+            <Component class="javax.swing.JTextField" name="txtInvoice">
             </Component>
             <Component class="javax.swing.JComboBox" name="cbStatus">
               <Properties>
@@ -519,6 +527,8 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="tgl_bayar">
             </Component>
           </SubComponents>
         </Container>
