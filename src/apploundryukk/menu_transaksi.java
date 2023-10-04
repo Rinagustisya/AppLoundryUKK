@@ -399,6 +399,11 @@ public class menu_transaksi extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tb_transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_transaksiMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_transaksi);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -462,6 +467,19 @@ public class menu_transaksi extends javax.swing.JFrame {
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
         // TODO add your handling code here:
+        DateFormat dateFormat2 = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        try {
+            stat = k.getCon().prepareStatement("UPDATE transaksi " + "set tgl_bayar=?, status=?, dibayar=? WHERE kode_invoice=?");
+            stat.setString(1, dateFormat2.format(tgl_bayar.getDate()));
+            stat.setString(2, cbStatus.getSelectedItem().toString());
+            stat.setString(3, cbPembayaran.getSelectedItem().toString());
+            stat.setString(4, txtInvoice.getText());
+            stat.executeUpdate();
+            refreshTable();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
@@ -489,18 +507,23 @@ public class menu_transaksi extends javax.swing.JFrame {
             stat.setString(8, txtBiaya.getText());
             stat.setDouble(9, diskon);
             stat.setInt(10, pajak);
-            stat.setString(11, cbStatus.getSelectedItem().toString());
-            stat.setString(12, cbPembayaran.getSelectedItem().toString());
-            stat.setString(13, txtQty.getText());
-            stat.setString(14, txtKet.getText());
-            stat.setString(15, idUser.getText());
-            stat.setString(16, split[0]);
+            stat.setString(11, "proses");
+            stat.setString(12,"belum_dibayar");
+            stat.setString(13, idUser.getText());
+            stat.setString(14, split[0]);
+            stat.setString(15, txtQty.getText());
+            stat.setString(16, txtKet.getText());
             stat.executeUpdate();
             refreshTable();
         } catch (Exception e) {
              JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btnTambahActionPerformed
+
+    private void tb_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_transaksiMouseClicked
+        // TODO add your handling code here:
+        txtInvoice.setText(model.getValueAt(tb_transaksi.getSelectedRow(),1).toString());
+    }//GEN-LAST:event_tb_transaksiMouseClicked
 
     /**
      * @param args the command line arguments
