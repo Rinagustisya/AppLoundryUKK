@@ -192,7 +192,7 @@
                                       <Component id="cbPaket" alignment="0" pref="172" max="32767" attributes="0"/>
                                       <Component id="txtQty" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="tanggal1" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Component id="tgl_batas" min="-2" pref="216" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
                           </Group>
@@ -209,7 +209,7 @@
                           <Component id="jLabel4" max="32767" attributes="0"/>
                           <Component id="jLabel8" pref="33" max="32767" attributes="0"/>
                           <Component id="Tanggal" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tanggal1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tgl_batas" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -376,7 +376,7 @@
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="Tanggal">
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="tanggal1">
+            <Component class="com.toedter.calendar.JDateChooser" name="tgl_batas">
             </Component>
           </SubComponents>
         </Container>
@@ -502,6 +502,7 @@
                     <StringItem index="3" value="Diambil"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="1"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -523,6 +524,7 @@
                     <StringItem index="1" value="Belum Dibayar"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="1"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

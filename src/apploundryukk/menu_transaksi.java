@@ -152,7 +152,7 @@ public class menu_transaksi extends javax.swing.JFrame {
         cbDiskon = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         Tanggal = new com.toedter.calendar.JDateChooser();
-        tanggal1 = new com.toedter.calendar.JDateChooser();
+        tgl_batas = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -271,7 +271,7 @@ public class menu_transaksi extends javax.swing.JFrame {
                                     .addComponent(jLabel12))
                                 .addComponent(cbPaket, 0, 172, Short.MAX_VALUE)
                                 .addComponent(txtQty))
-                            .addComponent(tanggal1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tgl_batas, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 27, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -283,7 +283,7 @@ public class menu_transaksi extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                     .addComponent(Tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tanggal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tgl_batas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,11 +330,13 @@ public class menu_transaksi extends javax.swing.JFrame {
         });
 
         cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Baru", "Proses", "Selesai", "Diambil" }));
+        cbStatus.setSelectedIndex(1);
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel16.setText("STATUS PEMBAYARAN");
 
         cbPembayaran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dibayar", "Belum Dibayar" }));
+        cbPembayaran.setSelectedIndex(1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -481,6 +483,20 @@ public class menu_transaksi extends javax.swing.JFrame {
             stat.setString(2, idOutlet.getText());
             stat.setString(3, inv);
             stat.setString(4, cbMember.getSelectedItem().toString());
+            stat.setString(5, dateFormat2.format(Tanggal.getDate()));
+            stat.setString(6, dateFormat2.format(tgl_batas.getDate()));
+            stat.setString(7, null);
+            stat.setString(8, txtBiaya.getText());
+            stat.setDouble(9, diskon);
+            stat.setInt(10, pajak);
+            stat.setString(11, cbStatus.getSelectedItem().toString());
+            stat.setString(12, cbPembayaran.getSelectedItem().toString());
+            stat.setString(13, txtQty.getText());
+            stat.setString(14, txtKet.getText());
+            stat.setString(15, idUser.getText());
+            stat.setString(16, split[0]);
+            stat.executeUpdate();
+            refreshTable();
         } catch (Exception e) {
              JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -553,8 +569,8 @@ public class menu_transaksi extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private com.toedter.calendar.JDateChooser tanggal1;
     private javax.swing.JTable tb_transaksi;
+    private com.toedter.calendar.JDateChooser tgl_batas;
     private com.toedter.calendar.JDateChooser tgl_bayar;
     private javax.swing.JTextField txtBiaya;
     private javax.swing.JTextField txtInvoice;
