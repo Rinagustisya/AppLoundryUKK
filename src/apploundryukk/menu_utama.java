@@ -1,5 +1,15 @@
 package apploundryukk;
 
+import java.io.File;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import java.net.URL;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
 public class menu_utama extends javax.swing.JFrame {
     
     private int id_user, id_outlet;
@@ -260,6 +270,20 @@ public class menu_utama extends javax.swing.JFrame {
 
     private void btn_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakActionPerformed
         // TODO add your handling code here:
+//        try {
+//            File namafile = new File("src/laporan/laporan.jasper");
+//            JasperPrint jp = JasperFillManager.fillReport(namafile.getPath(),null, k.getCon());
+//            JasperViewer.viewReport(jp,false);
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+//        }
+        try {
+            URL resource = getClass().getClassLoader().getResource("laporan/laporan.jasper");
+            JasperPrint jp = JasperFillManager.fillReport(resource.getPath(), null, k.getCon());
+            JasperViewer.viewReport(jp, false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_btn_cetakActionPerformed
 
     /**

@@ -330,13 +330,11 @@ public class menu_transaksi extends javax.swing.JFrame {
         });
 
         cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Baru", "Proses", "Selesai", "Diambil" }));
-        cbStatus.setSelectedIndex(1);
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel16.setText("STATUS PEMBAYARAN");
 
         cbPembayaran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dibayar", "Belum Dibayar" }));
-        cbPembayaran.setSelectedIndex(1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -496,7 +494,7 @@ public class menu_transaksi extends javax.swing.JFrame {
         
         try {
             this.stat = k.getCon().prepareStatement("INSERT INTO transaksi "
-            + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            + "values(?,?,?,?,?,?,?,?,?,?,"+"?,?,?,?,?,?)");
             stat.setInt(1, 0);
             stat.setString(2, idOutlet.getText());
             stat.setString(3, inv);
@@ -508,7 +506,7 @@ public class menu_transaksi extends javax.swing.JFrame {
             stat.setDouble(9, diskon);
             stat.setInt(10, pajak);
             stat.setString(11, "proses");
-            stat.setString(12,"belum_dibayar");
+            stat.setString(12,"belum dibayar");
             stat.setString(13, idUser.getText());
             stat.setString(14, split[0]);
             stat.setString(15, txtQty.getText());
