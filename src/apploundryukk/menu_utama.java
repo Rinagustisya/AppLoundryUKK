@@ -1,8 +1,5 @@
 package apploundryukk;
 
-import java.io.File;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import java.net.URL;
 import net.sf.jasperreports.engine.JRException;
